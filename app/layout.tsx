@@ -1,6 +1,11 @@
+import Head from 'next/head'
 import './globals.css'
 import { Inter } from 'next/font/google'
-
+import Container from '@/components/container'
+import { ShoppingCartIcon, UserIcon, Bars3Icon, PhoneIcon} from "@heroicons/react/24/outline";
+import Link from 'next/link';
+import { Suspense  } from 'react';
+import Loading from '@/components/loading';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,7 +20,54 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+
+        <Container> 
+          <div className='p-5'>
+          <NavBar />
+          <Suspense fallback={<Loading />}>
+          {children}
+          </Suspense>
+          <footer>
+            <small className="text-gray-500 items-center pr-2 pt-6 pb-6">© 2023 Pitched Ltd</small>
+          </footer>
+          </div>
+        </Container>
+        </body>
     </html>
+  )
+}
+
+function NavBar() {
+  return (
+      <div className="flex justify-between items-start space-x-8">
+        <Link href="/">
+          <div className='cursor-pointer'>
+            <h1 className="font-semibold text-5xl">
+              <span className="text-lg">Welcome to COASTFIELDS</span> 
+              <br />
+            </h1>
+          </div>
+        </Link>
+        <div className="flex justify-end items-center space-x-2 bg-gray-100 p-1 rounded-full">
+          <NavIcon>
+            <UserIcon className="h-5 w-5" />
+          </NavIcon>
+          <NavIcon>
+            <PhoneIcon className="h-5 w-5" />
+          </NavIcon>
+          <NavIcon>
+            <Bars3Icon className="h-5 w-5" />
+          </NavIcon>
+        </div>
+      </div>
+  )
+}
+
+function NavIcon({children}: {children: React.ReactNode}) {
+  return (
+    <div className="rounded-full h-10 w-10 flex items-center justify-center cursor-pointer hover:bg-gray-200 transition-colors">
+      {children}
+    </div>
   )
 }

@@ -5,9 +5,9 @@ import { MapPinIcon, ChevronDownIcon, UserGroupIcon, FolderIcon, HandThumbDownIc
 
 export default function UnitItem({ unit }) {
     // console.log("unit")
-    // console.log(unit)
+    console.log(unit._id)
     return (
-        <Link href={`/product/${unit.id}`} >
+        <Link href={`/unit/${unit._id}`} >
             <div className="bg-gray-100 rounded-tr-2xl rounded-tl-2xl group cursor-pointer space-y-2 hover:brightness-90 transition-all">
             <div className="flex items-center justify-between pl-2 ">
                 <img src={unit.featuredImage} className="w-40 border rounded-2xl pt-2" alt=""/>

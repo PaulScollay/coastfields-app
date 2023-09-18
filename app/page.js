@@ -2,8 +2,7 @@
 
 import { ShoppingCartIcon, UserIcon, FunnelIcon, PuzzlePieceIcon} from "@heroicons/react/24/outline";
 import { productTypes } from "../data/products";
-import ProductItem from "../components/productItem";
-import { getUnits, getUnitsByLocation } from '/lib/api';
+import { getUnits, getUnitsByLocation } from '@/lib/units/queries';
 import Link from "next/link"
 import UnitItem from "../components/unitItem";
 import { revalidatePath } from 'next/cache'

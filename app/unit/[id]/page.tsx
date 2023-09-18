@@ -5,8 +5,7 @@ export default async function UnitDetailItem({ params }: { params: { id: string 
   //const [mainImage, setMainImage] = useState(0)
   const unit = await getUnitDetails(params.id)
 
-  console.log("UNIT")
-  console.log(unit)
+//   console.log(unit)
   return (
         <div>
             {/* <title>{product.title}</title> */}
@@ -20,8 +19,7 @@ export default async function UnitDetailItem({ params }: { params: { id: string 
 
             <div className="flex flex-justify-between items-center">
                 <div className="space-y-2">
-                    {/* <h2 className="text-4xl font-semibold">{product.title}</h2>
-                    <p className="text-gray-500">£{product.price}</p> */}
+                    <h2 className="text-4xl font-semibold">{unit.name}</h2>
                 </div>
                 {/* <button className="bg-black text-white py-4 px-16 font-medium rounded-2xl hover:opacity-75 transition-opacity">
                     Buy now

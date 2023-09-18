@@ -11,7 +11,6 @@ import { revalidatePath } from 'next/cache'
 export default async function Page() {
   const unitsByLocation = await getUnits();
 
-  console.log(unitsByLocation[0].selfCaterings)
   return (
         <div>
           <hr className="mt-2"/>

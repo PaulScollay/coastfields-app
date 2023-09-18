@@ -35,4 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Sanity API project id
-.env.local
+# .env.local

@@ -28,8 +28,8 @@ export default function RootLayout({
           <Suspense fallback={<Loading />}>
           {children}
           </Suspense>
-          <footer>
-            <small className="text-gray-500 items-center pr-2 pt-6 pb-6">© 2023 Pitched Ltd</small>
+          <footer className="flex justify-center ">
+            <small className="text-gray-500 pr-2 pt-6 pb-6">© 2023 Pitched Ltd</small>
           </footer>
           </div>
         </Container>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getUnitDetails } from '@/lib/units/queries';
+import SelfCateringContent from "@/components/selfCatering/selfCateringContent";
 
 export default async function UnitDetailItem({ params }: { params: { id: string } }) {
   //const [mainImage, setMainImage] = useState(0)
@@ -17,34 +18,19 @@ export default async function UnitDetailItem({ params }: { params: { id: string 
 
 
 
-            <div className="flex flex-justify-between items-center">
-                <div className="space-y-2">
-                    <h2 className="text-4xl font-semibold">{unit.name}</h2>
-                </div>
-                {/* <button className="bg-black text-white py-4 px-16 font-medium rounded-2xl hover:opacity-75 transition-opacity">
-                    Buy now
-                </button> */}
+            <div className="flex justify-center p-2">
+                <p className="text-xl font-semibold">{unit.name}</p>
+
             </div>
-                {/* <div className="space-y-2">
-                    <img src={product.images[0]} className="w-full h-95 rounded-3xl border" />
-                <div className="flex space-x-2 justify0end rounded-full items-stretch p-2">
-                    {
-                        product.images.map((image: string, index: number) => (
-                            <button key="index">{index + 1}</button>
-                        ))
-                    }
-                </div>
-                </div> */}
-
-
-                
+            <div className="p-2">
+                <SelfCateringContent unit={unit} /> 
+            </div>
         </div>
 
   )
 }
 
 async function getProduct(id: string) {
-    console.log("ID:" + id)
     const res = await fetch(`https://dummyjson.com/products/${id}`)
    
     if (!res.ok) {

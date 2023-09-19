@@ -35,7 +35,6 @@ export default async function ProductItem({ params }: { params: { id: string } }
 }
 
 async function getProduct(id: string) {
-    console.log("ID:" + id)
     const res = await fetch(`https://dummyjson.com/products/${id}`)
    
     if (!res.ok) {

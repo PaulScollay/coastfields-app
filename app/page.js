@@ -4,7 +4,7 @@ import { ShoppingCartIcon, UserIcon, FunnelIcon, PuzzlePieceIcon} from "@heroico
 import { productTypes } from "../data/products";
 import { getUnits, getUnitsByLocation } from '@/lib/units/queries';
 import Link from "next/link"
-import UnitItem from "../components/unitItem";
+import UnitItem from "../components/selfCatering/unitItem";
 import { revalidatePath } from 'next/cache'
 // export const revalidate = 60
 

@@ -2,10 +2,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { MapPinIcon, ChevronDownIcon, UserGroupIcon, FolderIcon, HandThumbDownIcon } from "@heroicons/react/24/outline";
+import SelfCateringContent from "./selfCateringContent";
 
 export default function UnitItem({ unit }) {
-    // console.log("unit")
-    console.log(unit._id)
     return (
         <Link href={`/unit/${unit._id}`} >
             <div className="bg-gray-100 rounded-tr-2xl rounded-tl-2xl group cursor-pointer space-y-2 hover:brightness-90 transition-all">
@@ -21,17 +20,9 @@ export default function UnitItem({ unit }) {
                     </div>
 
                 </div>
-            </div>  
-            <div className="flex justify-between items-center text-sm  pt-1 pl-2 pr-2 bg-gray-100 ">
-                <FolderIcon className="h-5 w-5" />
-                <p className="pr-2">{unit.beds} Bed</p>
-                <UserGroupIcon className="h-5 w-5" />
-                <p className="pr-2">{unit.sleepCapacity}</p>
-                <UserGroupIcon className="h-5 w-5" />
-                <p className="pr-2">{unit.bathrooms} Baths</p>
-                <HandThumbDownIcon className="h-5 w-5" />
-                <p className="">Pets</p>
-            </div>
+            </div> 
+
+            <SelfCateringContent unit={unit} /> 
            <div className="flex justify-end items-center" >
             <button class="h-8 px-2 m-2 font-semibold rounded-md bg-black text-white" type="submit">
                 View & Book

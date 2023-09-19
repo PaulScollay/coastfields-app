@@ -10,13 +10,11 @@ export default async function UnitDetailItem({ params }: { params: { id: string 
   return (
         <div>
             {/* <title>{product.title}</title> */}
-            <title>ID {params.id}</title>
+            <title>{unit.name}</title>
             <div className="flex justify-between items-center text-white text-sm p-1 bg-black snap-start cursor-pointer hover:brightness-75 transition-all">
                 <p className="mr-8  font-semibold " >Ready to book this stay?</p>
                 <p  className="underline underline-offset-2">Start booking</p>
             </div>
-
-
 
             <div className="flex justify-center p-2">
                 <p className="text-xl font-semibold">{unit.name}</p>
@@ -24,6 +22,10 @@ export default async function UnitDetailItem({ params }: { params: { id: string 
             </div>
             <div className="p-2">
                 <SelfCateringContent unit={unit} /> 
+            </div>
+
+            <div className="flex justify-center p-2">
+                <p className="text-xl font-semibold">More information</p>
             </div>
         </div>
 

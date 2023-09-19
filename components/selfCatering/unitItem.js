@@ -29,9 +29,10 @@ export default function UnitItem({ unit }) {
             </button>
             </div>
             </div>
-            <div className="flex justify-between items-center text-sm p-1  bg-gray-300  rounded-bl-2xl rounded-br-2xl font-semibold snap-start cursor-pointer hover:brightness-75 transition-all">
-                <MapPinIcon className="h-5 w-5 text-sm" />
-                <p className="mr-8" >{unit.parkName}</p>
+            <div className="flex justify-start text-sm p-1  bg-gray-300  rounded-bl-2xl rounded-br-2xl font-semibold snap-start cursor-pointer hover:brightness-75 transition-all">
+                <MapPinIcon className="h-5 w-5 text-sm pr-1"/>
+                <span><p className="mr-8" >{unit.parkName}</p></span>
+
                 <p  className="underline underline-offset-2">See more info</p>
                 <ChevronDownIcon className="h-4 w-4" />
             </div>

@@ -1,4 +1,4 @@
-import ProductItem from "@/components/productItem"
+// import ProductItem from "@/components/productItem"
 import { productTypes } from "@/data/products"
 import { Key } from "react"
 
@@ -10,7 +10,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const poductsFiltered = data.products.filter((p: any) => p.category === productType?.slug)
     return (
       <div>
-        <title>{productType?.name}</title>
+        {/* <title>{productType?.name}</title> */}
         <div className={`${productType?.background} text-white p-16 font-semibold text-center text-4xl rounded-3xl `}>
           <h2>{productType?.name}</h2>
         </div>
@@ -18,9 +18,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <h3 className="text-x1 mt-5 font-semibold">featured products</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-4 gap-4">
             {
-              poductsFiltered.map((p: any, index: Key) => (
-                <ProductItem key={index} product={p}/>
-              ))
+              // poductsFiltered.map((p: any, index: Key) => (
+              //   <ProductItem key={index} product={p}/>
+              // ))
             }
           </div>
         </div>

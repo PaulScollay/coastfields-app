@@ -44,7 +44,7 @@ function NavBar() {
         <Link href="/">
           <div className='cursor-pointer'>
             <h1 className="font-semibold text-5xl">
-              <span className="text-lg">Welcome to COASTFIELDS</span> 
+              <span className="text-lg md:text-2xl">Welcome to COASTFIELDS</span> 
               <br />
             </h1>
           </div>

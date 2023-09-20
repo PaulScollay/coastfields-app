@@ -9,7 +9,15 @@ export default function UnitItem({ unit }) {
         <Link href={`/unit/${unit._id}`} >
             <div className="bg-gray-100 rounded-tr-2xl rounded-tl-2xl group cursor-pointer space-y-2 hover:brightness-90 transition-all">
             <div className="flex items-center justify-between pl-2 ">
-                <img src={unit.featuredImage} className="w-40 border rounded-2xl pt-2" alt=""/>
+                {/* <img src={unit.featuredImage} className="w-40 border rounded-2xl pt-2" alt=""/> */}
+                <div className="relative"> 
+                    <Image className="w-40 border rounded-2xl mt-2"
+                        src={unit.featuredImage}
+                        alt="Picture of the author"
+                        width={300}
+                        height={300}
+                    />
+                </div>
                 <div className="pl-4 mr-4 font font-dancing">
                     <div>
                         <h5 className="text-sm font-semibold line-clamp-1">{unit.name}</h5>

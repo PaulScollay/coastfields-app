@@ -10,6 +10,12 @@ module.exports = {
           port: '',
           pathname: '/data/products/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'cdn.sanity.io',
+          port: '',
+          pathname: '/images/**',
+        },
       ],
     },
   }

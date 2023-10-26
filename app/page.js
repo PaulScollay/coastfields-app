@@ -5,11 +5,19 @@ import { productTypes } from "../data/products";
 import { getUnits, getUnitsByLocation } from '@/lib/units/queries';
 import Link from "next/link"
 import UnitItem from "../components/selfCatering/unitItem";
+import { fetchProjects } from '@/app/cloud/_api/fetchProject'
 import { revalidatePath } from 'next/cache'
 // export const revalidate = 60
 
 export default async function Page() {
   const unitsByLocation = await getUnits();
+
+  const projectsRes = await fetchProjects();
+  // console.log("projectsRes")
+  console.log(projectsRes)
+  console.log(projectsRes.docs[0].locations)
+  console.log(projectsRes.docs[0].optionsTab)
+  console.log(projectsRes.docs[0])
 
   return (
         <div>

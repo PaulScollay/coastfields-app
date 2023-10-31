@@ -23,6 +23,7 @@ query SelfCateringUnit {
     docs {
       id
       name
+      price
       locations {
           id
           name

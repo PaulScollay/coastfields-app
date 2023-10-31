@@ -7,6 +7,7 @@ import SelfCateringContent from "./selfCateringContent";
 export default function UnitItem({ unit }) {
 
     const sourceImage = process.env.STORAGE_MEDIA_URL + unit.imagesTab.featuredImage.sizes.thumbnail.url
+    const options = unit.optionsTab.selfCateringContent.Beds
     return (
 
         <Link href={`/unit/${unit.id}`} >
@@ -32,7 +33,7 @@ export default function UnitItem({ unit }) {
                 </div>
             </div> 
 
-            {/* <SelfCateringContent unit={unit} />  */}
+            <SelfCateringContent unit={unit} /> 
            <div className="flex justify-end items-center" >
             <button class="h-8 px-2 m-2 font-semibold rounded-md bg-black text-white" type="submit">
                 View & Book

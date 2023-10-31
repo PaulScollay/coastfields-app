@@ -5,69 +5,16 @@ import { productTypes } from "../data/products";
 import { getUnits, getUnitsByLocation } from '@/lib/units/queries';
 import Link from "next/link"
 import UnitItem from "../components/selfCatering/unitItem";
-import { fetchProjects } from '@/app/cloud/_api/fetchProject'
+import { fetchSelfCateringUnits } from '@/app/cloud/_api/fetchSelfCateringUnits'
 import { revalidatePath } from 'next/cache'
 // export const revalidate = 60
 
 export default async function Page() {
   const unitsByLocation = await getUnits();
 
-  const projectsRes = await fetchProjects();
-  // console.log("projectsRes")
-  console.log(projectsRes)
-  console.log(projectsRes.docs[0].locations)
-  console.log(projectsRes.docs[0].optionsTab)
-  console.log(projectsRes.docs[0].unitType)
-
-  const { BlobServiceClient } = require("@azure/storage-blob");
-
-  // Load the .env file if it exists
-  require("dotenv").config();
-
-
-  const STORAGE_CONNECTION_STRING = process.env.STORAGE_CONNECTION_STRING || "";
-
-  // Note - Account connection string can only be used in node.
- const blobServiceClient = BlobServiceClient.fromConnectionString(STORAGE_CONNECTION_STRING);
-
-  // List blobs in container
-  try {
-    // Create container client
-    const containerClient = await blobServiceClient.getContainerClient(
-      "images"
-    );
-
-    //const blobName = "coastfields3.jpeg"
-    const blockBlobClient = containerClient.getBlockBlobClient("coastfields3.jpeg")
-    //const downloadBlockBlobResponse = await blockBlobClient.download(0);
-    //blockBlobClient.urlq
-    // do something with containerClient...
-    let i = 1;
-    console.log(blockBlobClient.url)
-
-
-
-    // List blobs in container
-    for await (const blob of containerClient.listBlobsFlat({
-      includeMetadata: true,
-      includeSnapshots: false,
-      includeTags: true,
-      includeVersions: false,
-      prefix: ''
-    })) {
-      //console.log(`Blob ${i++}: ${blob.name} ${blob.metadata} }`);
-    }
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-  for await (const container of blobServiceClient.listContainers()) {
-    //console.log(`Container ${i++}: ${container.name}`);
-  }
-  //console.log("URL : " + projectsRes.docs[0].imagesTab.featuredImage.sizes.thumbnail.url)
-
+  const projectsRes = await fetchSelfCateringUnits();
   const doc = projectsRes.docs[0]
-  console.log("URL : " + doc)
+  //console.log("URL : " + doc)
 
   return (
         <div>

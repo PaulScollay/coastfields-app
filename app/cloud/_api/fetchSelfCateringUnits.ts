@@ -11,7 +11,7 @@ import type { SelfCateringUnit } from '@/payload-types'
 //   stripeSubscription: Subscription
 // }
 
-export interface ProjectsRes {
+export interface SelfCateringUnits {
   docs: SelfCateringUnit[]
 
   totalDocs: number
@@ -19,6 +19,37 @@ export interface ProjectsRes {
   page: number
   limit: number
 }
+
+
+
+
+export const fetchSelfCateringUnits = async (teamIDs: string[]): Promise<SelfCateringUnits> => {
+
+  const res: SelfCateringUnits = await fetch(`${process.env.NEXT_PUBLIC_CLOUD_CMS_URL}/api/graphql`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // ...(token ? { Authorization: `JWT ${token}` } : {}),
+    },
+    // next: { tags: ['SelfCateringUnits'] },
+    body: JSON.stringify({
+      query: SELF_CATERING_UNITS_QUERY,
+      variables: {
+        // var: (add value here),
+        limit: 9,
+        page: 1,
+      },
+    }),
+  })
+    ?.then(r => r.json())
+    ?.then(data => {
+      if (data.errors) throw new Error(data?.errors?.[0]?.message ?? 'Error fetching doc')
+      return data?.data?.SelfCateringUnits
+    })
+  console.log("RES: " + JSON.stringify(res))
+  return res
+}
+
 
 
 // export const fetchTeams = async (teamIDs: string[]): Promise<Team[]> => {
@@ -50,34 +81,6 @@ export interface ProjectsRes {
 
 //   return res
 // }
-
-export const fetchProjects = async (teamIDs: string[]): Promise<ProjectsRes> => {
-
-  const res: ProjectsRes = await fetch(`${process.env.NEXT_PUBLIC_CLOUD_CMS_URL}/api/graphql`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-      // ...(token ? { Authorization: `JWT ${token}` } : {}),
-    },
-    // next: { tags: ['SelfCateringUnits'] },
-    body: JSON.stringify({
-      query: SELF_CATERING_UNITS_QUERY,
-      variables: {
-        // teamIDs: teamIDs.filter(Boolean),
-        limit: 9,
-        page: 1,
-      },
-    }),
-  })
-    ?.then(r => r.json())
-    ?.then(data => {
-      if (data.errors) throw new Error(data?.errors?.[0]?.message ?? 'Error fetching doc')
-      return data?.data?.SelfCateringUnits
-    })
-  console.log("RES: " + JSON.stringify(res))
-  return res
-}
-
 // export const fetchProjectAndRedirect = async (args: {
 //   teamSlug?: string
 //   projectSlug?: string

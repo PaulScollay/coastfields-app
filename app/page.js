@@ -10,7 +10,7 @@ import { revalidatePath } from 'next/cache'
 // export const revalidate = 60
 
 export default async function Page() {
-  const unitsByLocation = await getUnits();
+  //const unitsByLocation = await getUnits();
 
   const projectsRes = await fetchSelfCateringUnits();
   const doc = projectsRes.docs[0]

@@ -59,7 +59,7 @@ export const fetchProjects = async (teamIDs: string[]): Promise<ProjectsRes> => 
       'Content-Type': 'application/json'
       // ...(token ? { Authorization: `JWT ${token}` } : {}),
     },
-    next: { tags: ['SelfCateringUnits'] },
+    // next: { tags: ['SelfCateringUnits'] },
     body: JSON.stringify({
       query: SELF_CATERING_UNITS_QUERY,
       variables: {
@@ -74,7 +74,7 @@ export const fetchProjects = async (teamIDs: string[]): Promise<ProjectsRes> => 
       if (data.errors) throw new Error(data?.errors?.[0]?.message ?? 'Error fetching doc')
       return data?.data?.SelfCateringUnits
     })
-
+  console.log("RES: " + JSON.stringify(res))
   return res
 }
 

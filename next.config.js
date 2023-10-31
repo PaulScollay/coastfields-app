@@ -16,6 +16,12 @@ module.exports = {
           port: '',
           pathname: '/images/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'csbe69f7c4076f1x464dxbab.blob.core.windows.net',
+          port: '',
+          pathname: '/media/**',
+        },
       ],
     },
   }

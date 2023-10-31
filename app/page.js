@@ -19,52 +19,55 @@ export default async function Page() {
   console.log(projectsRes.docs[0].optionsTab)
   console.log(projectsRes.docs[0].unitType)
 
-//   const { BlobServiceClient } = require("@azure/storage-blob");
+  const { BlobServiceClient } = require("@azure/storage-blob");
 
-//   // Load the .env file if it exists
-//   require("dotenv").config();
-
-
-//   const STORAGE_CONNECTION_STRING = process.env.STORAGE_CONNECTION_STRING || "";
-
-//   // Note - Account connection string can only be used in node.
-//  const blobServiceClient = BlobServiceClient.fromConnectionString(STORAGE_CONNECTION_STRING);
-
-//   // List blobs in container
-//   try {
-//     // Create container client
-//     const containerClient = await blobServiceClient.getContainerClient(
-//       "images"
-//     );
-
-//     //const blobName = "coastfields3.jpeg"
-//     const blockBlobClient = containerClient.getBlockBlobClient("coastfields3.jpeg")
-//     //const downloadBlockBlobResponse = await blockBlobClient.download(0);
-//     //blockBlobClient.urlq
-//     // do something with containerClient...
-//     let i = 1;
-//     console.log(blockBlobClient.url)
+  // Load the .env file if it exists
+  require("dotenv").config();
 
 
+  const STORAGE_CONNECTION_STRING = process.env.STORAGE_CONNECTION_STRING || "";
 
-//     // List blobs in container
-//     for await (const blob of containerClient.listBlobsFlat({
-//       includeMetadata: true,
-//       includeSnapshots: false,
-//       includeTags: true,
-//       includeVersions: false,
-//       prefix: ''
-//     })) {
-//       //console.log(`Blob ${i++}: ${blob.name} ${blob.metadata} }`);
-//     }
-//   } catch (err) {
-//     console.log(err);
-//     throw err;
-//   }
-  // for await (const container of blobServiceClient.listContainers()) {
-  //   console.log(`Container ${i++}: ${container.name}`);
-  // }
+  // Note - Account connection string can only be used in node.
+ const blobServiceClient = BlobServiceClient.fromConnectionString(STORAGE_CONNECTION_STRING);
 
+  // List blobs in container
+  try {
+    // Create container client
+    const containerClient = await blobServiceClient.getContainerClient(
+      "images"
+    );
+
+    //const blobName = "coastfields3.jpeg"
+    const blockBlobClient = containerClient.getBlockBlobClient("coastfields3.jpeg")
+    //const downloadBlockBlobResponse = await blockBlobClient.download(0);
+    //blockBlobClient.urlq
+    // do something with containerClient...
+    let i = 1;
+    console.log(blockBlobClient.url)
+
+
+
+    // List blobs in container
+    for await (const blob of containerClient.listBlobsFlat({
+      includeMetadata: true,
+      includeSnapshots: false,
+      includeTags: true,
+      includeVersions: false,
+      prefix: ''
+    })) {
+      //console.log(`Blob ${i++}: ${blob.name} ${blob.metadata} }`);
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+  for await (const container of blobServiceClient.listContainers()) {
+    //console.log(`Container ${i++}: ${container.name}`);
+  }
+  //console.log("URL : " + projectsRes.docs[0].imagesTab.featuredImage.sizes.thumbnail.url)
+
+  const doc = projectsRes.docs[0]
+  console.log("URL : " + doc)
 
   return (
         <div>
@@ -86,11 +89,20 @@ export default async function Page() {
             <span>Filter results</span>
           </div>  
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 grid-rows-4 gap-4">
-              {
+              {/* {
                 unitsByLocation.map((units, index) => (
                   units.selfCaterings.map((sc, index) => (
                     <UnitItem key={index} unit={sc}/>
                   ))
+                ))
+              } */}
+              {
+                projectsRes.docs.map((unit, index) => (
+                  <UnitItem key={index} unit={unit}/>
+                  // units.SelfCateringUnits.docs.map((sc, index) => (
+                  //   <UnitItem key={index} unit={sc}/>
+                    
+                  // ))
                 ))
               }
             </div>
